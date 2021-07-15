@@ -1,0 +1,13 @@
+phase 1: datapacker
+
+phase 2: mcfunction composer
+
+visual item/block/entity/effect selector:
+	https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/f5/ItemCSS.png
+	https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/df/BlockCSS.png
+	https://static.wikia.nocookie.net/minecraft_gamepedia/images/4/40/EntityCSS.png
+sign preview
+banner generator
+
+
+rather than buckets, i want filters. two layers of hierarchy are acceptable.
