@@ -1,7 +1,7 @@
 class McFunction {
 	#codeField;
 	constructor(mcfunction) {
-		this.name = mcfunction?.name || "new-mcfunction";
+		this.name = mcfunction?.name || "";
 		this.code = mcfunction?.code || "";
 		this.view = document.createElement("li");
 		this.view.className = "mcfunction";
@@ -10,7 +10,7 @@ class McFunction {
 		const nameField = document.createElement("input");
 		nameField.type = "text";
 		nameField.value = this.name;
-		nameField.placeholder = "Function/File Name";
+		nameField.placeholder = "function/file name";
 		function nameChangeHandler() {
 			thisMcFunction.name = nameField.value;
 			autoSave();
@@ -20,7 +20,7 @@ class McFunction {
 
 		this.#codeField = document.createElement("textarea");
 		this.#codeField.value = this.code;
-		this.#codeField.placeholder = "McFunction";
+		this.#codeField.placeholder = "mcfunction code";
 		autoSizeTextarea(this.#codeField);
 		function codeChangeHandler() {
 			thisMcFunction.code = thisMcFunction.#codeField.value;
@@ -76,16 +76,12 @@ function packUpAndDownload(pack) {
 }
 
 const pack = JSON.parse(localStorage.getItem("pack") || JSON.stringify({
-	name: "testpack",
-	description: "Just a quickie to drop a McFunction into the world folder",
+	name: "",
+	description: "",
 	mcfunctions: [
 		{
-			name: "moose",
-			code: "summon moose ~ ~ ~"
-		},
-		{
-			name: "cat",
-			code: "summon cat ~ ~ ~"
+			name: "",
+			code: ""
 		}
 	]
 }));
@@ -109,7 +105,7 @@ downloadButton.addEventListener("click", () => {
 
 packNameField.type = "text";
 packNameField.value = pack.name;
-packNameField.placeholder = "Name of pack";
+packNameField.placeholder = "pack name";
 function packNameChangeHandler() {
 	pack.name = packNameField.value;
 	autoSave();
@@ -118,7 +114,7 @@ packNameField.addEventListener("change", packNameChangeHandler);
 packNameField.addEventListener("input", packNameChangeHandler);
 
 packDescriptionField.value = pack.description;
-packDescriptionField.placeholder = "Description";
+packDescriptionField.placeholder = "pack description";
 autoSizeTextarea(packDescriptionField);
 function packDescriptionChangeHandler() {
 	pack.description = packDescriptionField.value;
