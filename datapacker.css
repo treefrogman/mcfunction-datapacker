@@ -17,6 +17,34 @@
 	}
 }
 
+::-webkit-scrollbar {
+    background-color: var(--background-color);
+    width: 14px;
+    height: 14px;
+    margin:4px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: none;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--content-color);
+    border-radius: 10px;
+    border: solid 4px var(--background-color);
+}
+
+::-webkit-resizer, ::-webkit-scrollbar-corner {
+	background-color: var(--background-color);
+	border-radius: 50%;
+	border: solid 4px var(--content-color);
+}
+
+::-webkit-scrollbar-track-piece:increment {
+	cursor: s-resize;
+}
+
 body {
 	background-color: var(--background-color);
 }
