@@ -26,6 +26,7 @@ section {
 }
 
 input, textarea, button {
+	display: inline;
 	background-color: var(--background-color);
 	border: 1px solid var(--content-color);
 	box-shadow: 0 0 2px var(--content-color);
