@@ -4,6 +4,7 @@
 	--content-color: #1e1e1e;
 	--green-color: hsl(120, 100%, 80%);
 	--red-color: hsl(0, 100%, 80%);
+	--blue-color: hsl(240, 100%, 80%);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -12,6 +13,7 @@
 		--content-color: #f5f5f5;
 		--green-color: hsl(120, 100%, 25%);
 		--red-color: hsl(0, 100%, 25%);
+		--blue-color: hsl(240, 100%, 60%);
 	}
 }
 
@@ -33,6 +35,11 @@ input, textarea, button {
 	margin: 0;
 	padding: 6px 12px;
 	width: 50%;
+}
+
+input:focus, textarea:focus, button:focus {
+	box-shadow: -4px 4px 2px var(--blue-color), -4px -4px 2px var(--blue-color), 4px 4px 2px var(--blue-color), -4px 4px 2px var(--blue-color);
+	outline: none;
 }
 
 textarea {
