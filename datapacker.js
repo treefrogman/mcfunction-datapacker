@@ -20,11 +20,10 @@ class McFunction {
 
 		this.#codeField = document.createElement("textarea");
 		this.#codeField.value = this.code;
+		this.#codeField.setAttribute("spellcheck", "false");
 		this.#codeField.placeholder = "mcfunction code";
-		autoSizeTextarea(this.#codeField);
 		function codeChangeHandler() {
 			thisMcFunction.code = thisMcFunction.#codeField.value;
-			autoSizeTextarea(thisMcFunction.#codeField);
 			autoSave();
 		};
 		this.#codeField.addEventListener("change", codeChangeHandler);
@@ -42,19 +41,10 @@ class McFunction {
 		});
 		this.view.append(nameField, deleteButton, this.#codeField);
 	}
-
-	autoSize() {
-		autoSizeTextarea(this.#codeField);
-	}
 }
 
 function autoSave() {
 	localStorage.setItem("pack", JSON.stringify(pack));
-}
-
-function autoSizeTextarea(textarea) {
-	textarea.style.height = "auto";
-	textarea.style.height = (12 + textarea.scrollHeight) + "px";
 }
 
 function packUpAndDownload(pack) {
@@ -86,6 +76,12 @@ const pack = JSON.parse(localStorage.getItem("pack") || JSON.stringify({
 	]
 }));
 
+window.addEventListener("keydown", function (e) {
+	if (e.code === "Escape") {
+		document.activeElement.blur();
+	}
+});
+
 const editor = document.createElement("section");
 const reference = document.createElement("section");
 document.body.append(editor, reference);
@@ -115,10 +111,8 @@ packNameField.addEventListener("input", packNameChangeHandler);
 
 packDescriptionField.value = pack.description;
 packDescriptionField.placeholder = "pack description";
-autoSizeTextarea(packDescriptionField);
 function packDescriptionChangeHandler() {
 	pack.description = packDescriptionField.value;
-	autoSizeTextarea(packDescriptionField);
 	autoSave();
 }
 packDescriptionField.addEventListener("change", packDescriptionChangeHandler);
@@ -131,7 +125,6 @@ addMcFunctionButton.addEventListener("click", function () {
 	const mcFunction = new McFunction(null);
 	pack.mcfunctions.unshift(mcFunction);
 	addMcFunctionButton.after(mcFunction.view);
-	mcFunction.autoSize();
 });
 
 {
@@ -142,7 +135,4 @@ addMcFunctionButton.addEventListener("click", function () {
 	const mcfunctionViews = pack.mcfunctions.map((mcfunction) => mcfunction.view);
 
 	packMcFunctionList.append(addMcFunctionButton, ...mcfunctionViews);
-	pack.mcfunctions.forEach((mcfunction) => {
-		mcfunction.autoSize();
-	});
 }
